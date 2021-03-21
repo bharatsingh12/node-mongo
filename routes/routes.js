@@ -17,11 +17,11 @@ app.post("/register", async (req, res) => {
 
 // Login
 app.post("/login", async (req, res) => {
-  const credentials = req.body;
+  const credentials = req.body || {};
 
   try {
     const user = await userModel
-      .findOne({ name: credentials?.name, password: credentials?.password })
+      .findOne({ name: credentials.name, password: credentials.password })
       .exec();
 
     if (!user || !user._id) {
@@ -37,11 +37,11 @@ app.post("/login", async (req, res) => {
 // Update
 app.patch("/users/:id", async (req, res) => {
   try {
-    const payload = req?.body;
-    const queryParams = req?.params;
+    const payload = req.body;
+    const queryParams = req.params;
 
     // Find user by id and patch specified data
-    await userModel.findByIdAndUpdate(queryParams?.id, { age: payload?.age });
+    await userModel.findByIdAndUpdate(queryParams.id, { age: payload.age });
 
     // Save user now
     await userModel.save();
@@ -51,6 +51,7 @@ app.patch("/users/:id", async (req, res) => {
   }
 });
 
+// List all users
 app.get("/users", async (req, res) => {
   const users = await userModel.find({});
 

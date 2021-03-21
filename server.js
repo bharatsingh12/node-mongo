@@ -2,12 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const config = {
-    port = 3000,
-    db: {    
-        dbName: "user",
-        username: "bharat",
-        password: "Test@123",
-    }
+  port: 3000,
+  db: {
+    dbName: "user",
+    username: "bharat",
+    password: "Test@123",
+  },
 };
 
 const routes = require("./routes/routes.js");
