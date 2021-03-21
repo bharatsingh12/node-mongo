@@ -4,7 +4,8 @@ const app = express();
 
 // Register
 app.post("/register", async (req, res) => {
-  const user = new userModel(req.body);
+  const userData = { ...req.body, creation_date: new Date() };
+  const user = new userModel(userData);
 
   try {
     await user.save();
@@ -17,20 +18,18 @@ app.post("/register", async (req, res) => {
 
 // Login
 app.post("/login", async (req, res) => {
+  let statusCode = 500;
   const credentials = req.body || {};
 
   try {
     const user = await userModel
-      .findOne({ name: credentials.name, password: credentials.password })
+      .findOne({ email: credentials.email, password: credentials.password })
       .exec();
 
-    if (!user || !user._id) {
-      throw new Error("Wrong username or password!");
-    } else {
-      res.send(user);
-    }
+    res.send(user);
+    // }
   } catch (err) {
-    res.status(500).send(err);
+    res.status(statusCode).send(err);
   }
 });
 

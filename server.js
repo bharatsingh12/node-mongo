@@ -21,6 +21,7 @@ mongoose.connect(
   `mongodb+srv://${config.db.username}:${config.db.password}@cluster0.s0psb.mongodb.net/${config.db.dbName}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
+    useUnifiedTopology: true,
   }
 );
 
