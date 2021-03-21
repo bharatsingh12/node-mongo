@@ -1,4 +1,5 @@
 const express = require("express");
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 
 const config = {
@@ -14,6 +15,7 @@ const routes = require("./routes/routes.js");
 
 const app = express();
 app.use(express.json()); // Make sure it comes back as json
+app.use(morgan("combined"));
 
 mongoose.connect(
   `mongodb+srv://${config.db.username}:${config.db.password}@cluster0.s0psb.mongodb.net/${config.db.dbName}?retryWrites=true&w=majority`,
