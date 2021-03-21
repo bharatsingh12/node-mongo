@@ -53,6 +53,7 @@ Base URL will be: http://localhost:3000
 
 ### ==================== User Update: ====================
 // Note: Use _id of any user (which you want to update) from users list response
+
 **API Endpoint:** /users/:id
 
 **Method:** PATCH
