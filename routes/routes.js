@@ -27,7 +27,6 @@ app.post("/login", async (req, res) => {
       .exec();
 
     res.send(user);
-    // }
   } catch (err) {
     res.status(statusCode).send(err);
   }
@@ -36,15 +35,15 @@ app.post("/login", async (req, res) => {
 // Update
 app.patch("/users/:id", async (req, res) => {
   try {
-    const payload = req.body;
-    const queryParams = req.params;
+    const payload = req.body || {};
+    const queryParams = req.params || {};
 
     // Find user by id and patch specified data
-    await userModel.findByIdAndUpdate(queryParams.id, { age: payload.age });
+    const user = await userModel.findByIdAndUpdate(queryParams.id, {
+      age: payload.age,
+    });
 
-    // Save user now
-    await userModel.save();
-    res.send(food);
+    res.send(user);
   } catch (err) {
     res.status(500).send(err);
   }
