@@ -43,8 +43,16 @@ Base URL will be: http://localhost:3000
 
 
 
-### ==================== User Update: ====================
+### ==================== List all users: ====================
 
+**API Endpoint:** /users
+
+**Method:** GET
+
+
+
+### ==================== User Update: ====================
+// Note: Use _id of any user (which you want to update) from users list response
 **API Endpoint:** /users/:id
 
 **Method:** PATCH
@@ -59,13 +67,5 @@ Base URL will be: http://localhost:3000
 ### =============== Users count above specified age: ===============
 
 **API Endpoint:** python/users/above-age/25
-
-**Method:** GET
-
-
-
-### ==================== List all users: ====================
-
-**API Endpoint:** /users
 
 **Method:** GET
