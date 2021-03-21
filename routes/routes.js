@@ -49,6 +49,19 @@ app.patch("/users/:id", async (req, res) => {
   }
 });
 
+// Users above age
+app.get("/users/above-age/:age", async (req, res) => {
+  try {
+    const age = req.params.age;
+
+    const userCount = await userModel.countDocuments({ age: { $gt: age } });
+
+    res.send({ count: userCount });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 // List all users
 app.get("/users", async (req, res) => {
   const users = await userModel.find({});
