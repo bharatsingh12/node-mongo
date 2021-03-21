@@ -71,8 +71,9 @@ Base URL will be: http://localhost:3000
 
 **Method:** GET
 
-
-
+<br/>
+<br/>
+<br/>
 
 # Author:
 **Bharat Singh**
