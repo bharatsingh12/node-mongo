@@ -56,7 +56,7 @@ Base URL will be: http://localhost:3000
 
 
 
-### ==================== Users count above specified age: ====================
+### =============== Users count above specified age: ===============
 
 **API Endpoint:** python/users/above-age/25
 
